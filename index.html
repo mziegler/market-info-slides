@@ -7,10 +7,35 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/night.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+		.reveal .slides section .fragment.growshrink {
+			opacity: 1;
+			visibility: inherit;
+		}
+		.reveal .slides section .fragment.growshrink.visible.current-fragment {
+			-webkit-transform: scale(1.1);
+			transform: scale(1.1);
+		}
+		.reveal .slides section .fragment.growshrink-big {
+			opacity: 1;
+			visibility: inherit;
+		}
+		.reveal .slides section .fragment.growshrink-big.visible.current-fragment {
+			-webkit-transform: scale(1.3);
+			transform: scale(1.3);
+		}
+
+
+		.reveal section img {
+			box-shadow: none;
+			border: 0;
+		}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -24,8 +49,171 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section style="text-align: left" data-background-image="pictures/dharhara-road.jpg">
+					<div class="stretch"></div>
+					<h5 style="text-align:right">Fresh Insights:</h5>
+					<h6 style="text-align:right; font-size:85%; text-align: right">
+							User Research Towards a Market Information<br />System for Bihari Vegetable Farmers
+					</h6>
+				</section>
+
+
+				<section>
+					<h3>Outline</h3>
+					<ol>
+						<li class="fragment growshrink">Bihari Vegetable Markets & Loop</li>
+						<li class="fragment growshrink">Market Info Services</li>
+						<li class="fragment growshrink">
+							User Research
+							<div style="font-size:50%; opacity:80%">
+								How might we create something useful for Bihari vegetable farmers?
+							</div>
+						</li>
+					</ol>
+				</section>
+
+
+				<section>
+					<section>
+						<h4>Bihari vegetable markets</h4>
+						<div class="stretch"></div>
+						Heterogenous structures
+					</section>
+					<section>
+						<h4>Marketplace Actors</h4>
+						<ul>
+							<li class="fragment growshrink">Local Traders</li>
+							<li class="fragment growshrink">Long-Distance Traders</li>
+							<li class="fragment growshrink">Commission Agents / Gaddidars</li>
+							<li class="fragment growshrink">Loop Aggregators</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment growshrink">Prices: unpredictable, sometimes volatile</li>
+							<li class="fragment growshrink">Few women in markets</li>
+							<li class="fragment growshrink">Cost: Cuts for Spoilage</li>
+							<li class="fragment growshrink">Cost: Transportation</li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section data-background-color="white" >
+					<section data-background-image="pictures/loop-background.jpg" data-background-transition="slide" data-transition="slide" style="color:white">
+						<img src="pictures/LoopLogo_FullAll_Reversed.png" style="width:30%; height: auto"><br />
+						Shared transport-to-market<br />service for farmers
+					</section>
+
+					<section data-transition="slide" style="color:#222">
+						<h5 style="color:#222">Benefits for farmers</h5>
+						<img class="stretch" src="pictures/loop-benefits.png">
+					</section>
+
+					<section data-transition="slide" data-background-transition="slide">
+						<img class="stretch" src="pictures/Loop-flowchart.jpg">
+					</section>
+
+					<section data-transition="slide">
+						<img class="stretch" src="pictures/loopscreens-combined.png">
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h3>Market Information Services</h3>
+						<!--div class="stretch" style="position:relative"-->
+								<img src="pictures/esoko-1.jpg">
+								<img src="pictures/farmbee.png" style="width:200px">
+								<img src="pictures/msamb-app.png" style="width:220px">
+								<br><a style="font-size:8px; opacity:0.7" href="https://indigotrust.org.uk/2012/07/19/supporting-rural-communities-in-ghana-health-and-agriculture-tech-solutions/">https://indigotrust.org.uk/2012/07/19/supporting-rural-communities-in-ghana-health-and-agriculture-tech-solutions/</a>
+								<a style="font-size:8px; opacity:0.7" href="https://sensortower.com/android/ca/rml-agtech/app/farmbee-rml-farmer/com.rml.Activities/overview">https://sensortower.com/android/ca/rml-agtech/app/farmbee-rml-farmer/com.rml.Activities/overview</a>
+								<a style="font-size:8px; opacity:0.7" href="https://play.google.com/store/apps/details?id=com.msamb&hl=en_US">https://play.google.com/store/apps/details?id=com.msamb&hl=en_US</a>
+						<!--/div-->
+					</section>
+					<section>
+						<h5>Theory</h5>
+						<h3 class="fragment growshrink-big">1. Information Asymmetry</h3>
+						<h3 class="fragment growshrink-big">2. Information Scarcity</h3>
+					</section>
+					<section>
+						<img src="pictures/jensen-graph.png" class="stretch"><br />
+						Jensen 2007: sardine prices stabalized upon the arrival of mobile phones at sites in Kerala
+					</section>
+					<section>
+						<img src="pictures/guardian-screenshot.png" class="stretch">
+					</section>
+					<section>
+						Evaluations
+					</section>
+					<section>
+						<blockquote class="fragment" cite="https://doi.org/10.1080/03085147.2015.1013742">
+							"...our informants consistently disclaimed any practice of acquiring market price information for the purpose of comparison between markets (by phone or other means)..."<br>
+							<span style="font-size:80%; opacity:0.8">&mdash; Burrell and Oreglia 2015</span>
+						</blockquote>
+						<ul>
+							<li>Usability problems</li>
+							<li>Lack of alternative markets</li>
+							<li>Unfamiliarity with other markets</li>
+							<li>Relationships with market agents</li>
+							<li>Hesitance to take risks</li>
+						</ul>
+					</section>
+				</section>
+
+				<section data-background-color="white" style="color:#222">
+					<h5 style="color:#222">Why a market information system for Loop?</h5>
+					<ul style="font-size:80%">
+						<li>Loop already has accurate price data</li>
+						<li>Promising conditions in Buxar</li>
+						<li>Ongoing research about Loop's logistics</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Interviews</h3>
+					<ul style="font-size:70%">
+							<li>11 farmers</li>
+							<li>6 Loop aggregators (also farmers)</li>
+							<li>3 Commission agents</li>
+							<li style="list-style:none">&nbsp;</li>
+							<li>All men, ages 20 to 61</li>
+							<li>18 of 20 had mobile phones</li>
+							<li>All farmers grew vegetables</li>
+							<li>Majority owned farmland</li>
+							<li style="list-style:none">&nbsp;</li>
+							<li>Interviews in Hindi</li>
+							<li>2-person interview team</li>
+							<li>Tried for private interview locations</li>
+							<li>All recorded except commission agents</li>
+							<li>Questions informed by prior fieldwork</li>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h4>Most farmers sought and used price information</h4>
+						- market choice
+						- negotiation
+						- arbitrage
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Changes in markets</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Not just prices</h3>
+						Many other factors go into marketing decisions
+					</section>
+				</section>
+
 			</div>
 		</div>
 
@@ -42,7 +230,9 @@
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
+				],
+				transition: 'fade',
+				history: true
 			});
 		</script>
 	</body>
