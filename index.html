@@ -1,475 +1,591 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+        <title>reveal.js</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/night.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/night.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<style type="text/css">
-		.reveal .slides section .fragment.growshrink {
-			opacity: 1;
-			/*visibility: inherit;*/
-		}
-		.reveal .slides section .fragment.growshrink.visible.current-fragment {
-			-webkit-transform: scale(1.2);
-			transform: scale(1.2);
+        <style type="text/css">
+        .reveal .slides section .fragment.growshrink {
+            opacity: 1;
+            /*visibility: inherit;*/
         }
-		.reveal .slides section .fragment.growshrink-big {
-			opacity: 1;
-			visibility: inherit;
-		}
-		.reveal .slides section .fragment.growshrink-big.visible.current-fragment {
-			-webkit-transform: scale(1.3);
-			transform: scale(1.3);
-		}
+        .reveal .slides section .fragment.growshrink.visible.current-fragment {
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+        .reveal .slides section .fragment.growshrink-big {
+            opacity: 1;
+            visibility: inherit;
+        }
+        .reveal .slides section .fragment.growshrink-big.visible.current-fragment {
+            -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+        }
 
-		.whitebg {
-			color: #000 !important;
-		}
+        .whitebg {
+            color: #000 !important;
+        }
 
-		.whitebg h1, .whitebg h2, .whitebg h3, .whitebg h4, .whitebg h5 {
-			color: #000 !important;
-		}
+        .whitebg h1, .whitebg h2, .whitebg h3, .whitebg h4, .whitebg h5 {
+            color: #000 !important;
+        }
 
-		.whitebg blockquote {
-			/*background-color:rgba(30,30,30,0.7);*/
-			/*background-color:rgba(209,61,20,1);*/
-			background: /*#F37A53;*/ #F05928 !important;
-			padding: 20px !important;
-			color: #000 !important;
-		}
+        .whitebg blockquote {
+            /*background-color:rgba(30,30,30,0.7);*/
+            /*background-color:rgba(209,61,20,1);*/
+            background: /*#F37A53;*/ #F05928 !important;
+            padding: 20px !important;
+            color: #000 !important;
+        }
 
-		.reveal section img {
-			box-shadow: none;
-			border: 0;
-			background:none;
-		}
+        .reveal section img {
+            box-shadow: none;
+            border: 0;
+            background:none;
+        }
+        
+        .fragment-popup {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s;
+        }
+        
+        .current-fragment .fragment-popup {
+            height: auto;
+            transition: height 0.3s;
+        }
 
+        .fragment-bold {
+            font-weight: normal;
+            font-size: inherit;
+            transition: font-size 0.3s;
+        }
 
-
-		</style>
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section style="text-align: left" data-background-image="pictures/dharhara-road.jpg">
-					<div class="stretch"></div>
-					<h5 style="text-align:right">Fresh Insights:</h5>
-					<h6 style="text-align:right; font-size:85%; text-align: right">
-							User Research Towards a Market Information<br />System for Bihari Vegetable Farmers
-					</h6>
-				</section>
-
-
-				<!--<section data-background-color="#3D3D3F">
-					<h3>Outline</h3>
-					<ol>
-						<li class="fragment growshrink">Bihari Vegetable Markets & Loop</li>
-						<li class="fragment growshrink">Market Info Services</li>
-						<li class="fragment growshrink">
-							User Research
-							<div style="font-size:50%; opacity:80%">
-								How might we create something useful for Bihari vegetable farmers?
-							</div>
-						</li>
-					</ol>
-				</section>-->
-
-                <section data-background-color="#3D3D3F" data-background-opacity="0.2" data-background-image="pictures/turmeric-field.jpg">
-					<h3>Outline</h3>
-					<ol>
-						<li class="fragment growshrink">Loop: Shared Transport-To-Market Service</li>
-				        <li class="fragment growshrink">Market Info Services</li>
-				        <li class="fragment growshrink">
-				            User Research: Bihari Vegetable Markets
-				            <ul style="font-size:80%">
-				                <li>Mobile Phone Use</li>
-				                <li>Price Checking</li>
-				                <li>Changes in Mkts</li>
-				                <li>Other Factors</li>
-				            </ul>    
-				        </li>
-				        <li class="fragment growshrink">Prototypes</li>
-					</ol>
-				</section>
+        .current-fragment .fragment-bold {
+            font-weight: bold;
+            font-size: 160%;
+            transition: font-size 0;
+        }
+        
+        ul.list-with-popups .fragment-popup blockquote {
+            font-size: 80%;
+        }
 
 
-                <section data-background-color="white" >
-					<section data-background-image="pictures/loop-background.jpg" data-background-transition="slide" data-transition="slide" style="color:white">
-						<img src="pictures/LoopLogo_FullAll_Reversed.png" style="width:30%; height: auto"><br />
-						Shared transport-to-market<br />service for farmers
-					</section>
-
-					<section data-transition="slide" style="color:#222">
-						<h5 style="color:#222">Benefits for farmers</h5>
-						<img class="stretch" src="pictures/loop-benefits.png">
-					</section>
-
-					<!--<section data-transition="slide" data-background-transition="slide">
-						<img class="stretch" src="pictures/Loop-flowchart.jpg">
-					</section>-->
-
-					<section data-transition="slide">
-						<img class="stretch" src="pictures/loopscreens-combined.png">
-					</section>
-				</section>
-
-                <section data-background-color="#D13D14" style="color:#FFF">
-					<h5 style="color:#FFF">Why a market information system for Loop?</h5>
-					<ul style="font-size:100%">
-						<li>Loop has accurate price data</li>
-						<li>Loop operations research</li>
-						<li>Promising conditions in Buxar</li>
-					</ul>
-				</section>
+        .speech-bubble-above { position: relative; background: #58d2dd; border-radius: .4em;} .speech-bubble-above:after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 0; border: 44px solid transparent; border-top-color: #58d2dd; border-bottom: 0; border-left: 0; margin-left: 200px; margin-bottom: -44px; }
 
 
+        .speech-bubble-below { position: relative; background: #b4f14c; border-radius: .4em;} .speech-bubble-below:after { content: ''; position: absolute; top: 0; left: 50%; width: 0; height: 0; border: 44px solid transparent; border-bottom-color: #b4f14c; border-top: 0; border-right: 0; margin-left: -220px; margin-top: -44px; }
+
+        ul.inline-list li {
+            float: left;
+            margin-left: 1.5em;
+            display: list-item;
+        }
 
 
-				<section data-background-color="3D3D3F" data-background-opacity="0.1" data-background-image="pictures/gobitruck.jpg">
-					<section>
-						<h5>Theory</h5>
-						<h3 class="fragment growshrink-big">1. Information Asymmetry</h3>
-						<h3 class="fragment growshrink-big">2. Information Scarcity</h3>
-					</section>
-					<section>
-						<img src="pictures/jensen-graph.png" class="stretch"><br />
-						Jensen 2007: sardine prices stabalized upon the arrival of mobile phones at sites in Kerala
-					</section>
-					<section>
-						<img src="pictures/guardian-screenshot.png" class="stretch">
-					</section>
-					<section>
-						<h3>Market Information Services</h3>
-						<!--div class="stretch" style="position:relative"-->
-								<img src="pictures/esoko-1.jpg">
-								<img src="pictures/farmbee.png" style="width:200px">
-								<img src="pictures/msamb-app.png" style="width:220px">
-								<br><a style="font-size:8px; opacity:0.7" href="https://indigotrust.org.uk/2012/07/19/supporting-rural-communities-in-ghana-health-and-agriculture-tech-solutions/">https://indigotrust.org.uk/2012/07/19/supporting-rural-communities-in-ghana-health-and-agriculture-tech-solutions/</a>
-								<a style="font-size:8px; opacity:0.7" href="https://sensortower.com/android/ca/rml-agtech/app/farmbee-rml-farmer/com.rml.Activities/overview">https://sensortower.com/android/ca/rml-agtech/app/farmbee-rml-farmer/com.rml.Activities/overview</a>
-								<a style="font-size:8px; opacity:0.7" href="https://play.google.com/store/apps/details?id=com.msamb&hl=en_US">https://play.google.com/store/apps/details?id=com.msamb&hl=en_US</a>
-						<!--/div-->
-					</section>
-					<section>
-						<h4>Evaluations</h4>
-						<table style="font-size:60%">
-							<tr><td><b>Farmers percieved getting higher prices</b></td><td>Islam & Ake Grönlund 2009, Lokanathan et al 2011</td></tr>
-							<tr><td><b>Evidence of increased bargaining power</b></td><td>Courtois & Subervie 2014, NYU CTED 2013, Nakasone 2013</td></tr>
-							<tr><td><b>Price increases for some crops but not others</b></td><td>Nakasone 2013, NYU CTED 2013, Courtois & Subervie 2014</td></tr>
-							<tr><td><b>No observed effect on prices</b></td><td>Camacho & Conover 2010, Fafchamps & Minten 2012</td></tr>
-							<tr><td><b>No observed change in marketing behaviors</b></td><td>Baumüller 2015, Islam & Grönlund 2010, Lokanathan et al 2011</td></tr>
-						</table>
-					</section>
+        </style>
 
-					<section>
-						<h3>Shortcomings</h3>
-						<ul>
-							<li>Usability problems</li>
-							<li>Lack of alternative markets</li>
-							<li>Farmers already know prices</li>
-							<li>Unfamiliarity with other markets</li>
-							<li>Relationships with market agents</li>
-							<li>Attitudes towards risk</li>
-						</ul>
-					</section>
-
-					<section>
-						<blockquote cite="https://doi.org/10.1080/03085147.2015.1013742">
-							"...our informants consistently disclaimed any practice of acquiring market price information for the purpose of comparison between markets (by phone or other means)..."<br>
-							<span style="font-size:80%; opacity:0.8">&mdash; Burrell and Oreglia 2015</span>
-						</blockquote>
-					</section>
-				</section>
-
-
-                <section data-background-image="pictures/market2.jpg" data-background-opacity="0.5" data-background-color"#222">
-					<h3 style="color:#FFF">Could a Market Info system be useful in Buxar?</h3>
-					<h5 class="fragment">Interviews + Long-term field engagement</h5>
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section style="text-align: left" data-background-image="pictures/dharhara-road.jpg">
+                    <div class="stretch"></div>
+                    <h5 style="text-align:right">Fresh Insights</h5>
+                    <h6 style="text-align:right; font-size:85%; text-align: right">
+                            User Research Towards a Market Information<br />Service for Bihari Vegetable Farmers
+                    </h6>
                 </section>
 
-				<section>
-					<section data-background-image="pictures/nayabhojpur.jpg" style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1); color:#FFF">
-						<div class="stretch"></div>
-						<h3 style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1); color:#FFF">Bihari vegetable markets</h3>
-						Heterogenous structures
-					</section>
-					<section data-background-image="pictures/gobi-gaddidar-edited.jpg">
-						<div class="fragment" style="background:rgba(30,30,30,0.7); padding: 50px; position: absolute; right:0">
-							<h4>Marketplace Actors</h4>
-							<ul>
-								<li class="fragment growshrink">Local Traders</li>
-								<li class="fragment growshrink">Long-Distance Traders</li>
-								<li class="fragment growshrink">Commission Agents / Gaddidars</li>
-								<li class="fragment growshrink">Laborers</li>
-							</ul>
-						</div>
-					</section>
-					<section data-background-image="pictures/dharhara-standing.jpg">
-					    <div class="fragment" style="background:rgba(30,30,30,0.7); padding: 50px;">
-							<h4>Heterogenous structures</h4>
-							<ul>
-								<li class="fragment growshrink">Varying sizes</li>
-								<li class="fragment growshrink">Retail vs. Wholesale</li>
-								<li class="fragment growshrink">Consumption vs. Export</li>
-								<li class="fragment growshrink">Volatile Prices</li>
-							</ul>
-						</div>
-					</section>
-					<section data-background-image="pictures/standing-with-greens-recolored.jpg" data-background-size="contain" ></section>
 
-					<section data-background-image="pictures/sack.jpg" data-background-size="contain"></section>
-					<section data-background-image="pictures/transport1.jpg"></section>
-					<section data-background-image="pictures/gobitruck.jpg"></section>
-					<section data-background-image="pictures/onionbike.jpg"  data-background-size="contain" ></section>
-				</section>				
+                <!--<section data-background-color="#3D3D3F">
+                    <h3>Outline</h3>
+                    <ol>
+                        <li class="fragment growshrink">Bihari Vegetable Markets & Loop</li>
+                        <li class="fragment growshrink">Market Info Services</li>
+                        <li class="fragment growshrink">
+                            User Research
+                            <div style="font-size:50%; opacity:80%">
+                                How might we create something useful for Bihari vegetable farmers?
+                            </div>
+                        </li>
+                    </ol>
+                </section>-->
+
+                <section data-background-color="#3D3D3F" data-background-opacity="0.2" data-background-image="pictures/turmeric-field.jpg">
+                    <h3>Outline</h3>
+                    <ol>
+                        <li class="fragment">Market Info Services</li>
+                        <li class="fragment">Context: Loop</li>
+                        <li class="fragment">
+                            User Research:<br> Information in Bihari Vegetable Markets
+                            <div style="font-size:70%">
+                                Recent&nbsp;mkt&nbsp;changes
+                                &bull;&nbsp;Phones&nbsp;in&nbsp;marketing
+                                &bull;&nbsp;Additional&nbsp;factors
+                            </div>
+                        </li>
+                        <li class="fragment">Prototypes</li>
+                    </ol>
+                </section>
 
 
+                <section data-background-color="white" class="whitebg">
+                    <section>
+                        <h3>Market Information Services</h3>
+                        <!--div class="stretch" style="position:relative"-->
+                                <img src="pictures/esoko-1.jpg">
+                                <img src="pictures/farmbee.png" style="width:200px">
+                                <img src="pictures/msamb-app.png" style="width:220px">
+                                <br><div style="line-height:1"><a style="font-size:8px; opacity:0.7" href="https://indigotrust.org.uk/2012/07/19/supporting-rural-communities-in-ghana-health-and-agriculture-tech-solutions/">source</a> <a style="font-size:8px; opacity:0.7" href="https://sensortower.com/android/ca/rml-agtech/app/farmbee-rml-farmer/com.rml.Activities/overview">source</a> <a style="font-size:8px; opacity:0.7" href="https://play.google.com/store/apps/details?id=com.msamb&hl=en_US">source</a></div>
+                        <!--/div-->
+                    </section>
+                    
+                    <section>
+                        <h5 style="margin-bottom:-0.4em; font-size:85%">Theory</h5>
+                        <h3>Information Asymmetry</h3>
+                        <br>
+                        <div class="speech-bubble-above" style="padding-top: 20px; padding-bottom: 20px; width: 80%; margin-left: auto; margin-right: auto;"><b>Trader</b> knows the price is ₹100</div>
+                        <br>
+                        <img src="pictures/carrot.png" style="height:80px; width: auto;">
+                        <img src="pictures/carrot.png" style="height:80px; width: auto;">
+                        <img src="pictures/carrot.png" style="height:80px; width: auto;">
+                        <br><br>
+                        <div class="speech-bubble-below" style="padding-top: 20px; padding-bottom: 20px; width: 80%; margin-left: auto; margin-right: auto;"><b>Farmer</b> thinks the price is ₹70</div>
+                    </section>
+                    
+                    <section>
+                        <h5 style="margin-bottom:-0.4em; font-size:85%">Theory</h5>
+                        <h3>Information Scarcity</h3>
+                        <img src="pictures/jensen-graph.png" class="stretch"><br />
+                        <small>Jensen 2007: sardine prices stabalized upon the arrival of mobile phones</small>
+                    </section>
+                </section>
 
-				<section class="whitebg" data-background-color="#d6d8db" data-background-image="pictures/market2.jpg" data-background-opacity="0.2">
-				    <section>
-				        <h3>Mobile phones for Vegetable Marketing</h3>
-				        <p>Phones became widespread around 2015</p>
-				    </section>
-					<section data-transition="slide">
-						<h3 style="color:#000">Checking prices</h3>
-						<blockquote class="dark">"I call and keep a check on prices on frequently. Different
-times during the day, I call different markets... Every day, different
-markets, different times."</blockquote>
-						<p>Many sources + many exeptions</p>
-						<aside class="notes">Many exceptions: trusting local traders, choosing markets based on volume but not price, my local market has good rates.</aside>
-					</section>
-					<section data-transition="slide">
-						<h3 style="color:#000">Most farmers sought and used price information</h3>
-						<blockquote class="dark">"I call and keep a check on prices on frequently. Different
-times during the day, I call different markets... Every day, different
-markets, different times."</blockquote>
-						<p>(+ many exceptions)</p>
-						<aside class="notes">Many exceptions: trusting local traders, choosing markets based on volume but not price, my local market has good rates.</aside>
-					</section>
-					<section data-transition="slide">
-						<h3 style="color:#000">Market Choice</h3>
-						<blockquote class="dark">"When the mandi starts everyday, [I find] out the rates everyday.  Wherever the rate is good, I go there."</blockquote>
-					</section>
-					<section data-transition="slide">
-						<h3 style="color:#000">Negotiation</h3>
-						<blockquote class="dark">"we negotiate with farm-gate traders based on the previous
+                <section data-background-color="white">
+                    <section data-background-image="pictures/loop-background.jpg" data-background-transition="slide" data-transition="slide" style="color:white">
+                        <img src="pictures/LoopLogo_FullAll_Reversed.png" style="width:30%; height: auto"><br />
+                        Shared transport-to-market<br />service for farmers
+                    </section>
+
+                    <section>
+                        <img class="stretch" src="pictures/Loop-website-screenshot.png" style="border: solid 1px #666">
+                    </section>
+
+                    <section data-transition="slide">
+                        <img class="stretch" src="pictures/loopscreens-combined.png">
+                    </section>
+                    
+                    <section data-transition="slide" class="whitebg">
+                        Loop already has reliable price data<br>
+                        <img class="stretch" src="pictures/Loop-dashboard-screenshot.png">
+
+                    </section>
+                </section>
+
+                
+
+
+                <section data-background-color="3D3D3F" data-background-opacity="0.1" data-background-image="pictures/gobitruck.jpg">                    
+                    <section>
+                        <img src="pictures/guardian-screenshot.png" class="stretch">
+                    </section>
+                    
+                    <section>
+                        <h4>Mixed Evaluations of Market Info Services</h4>
+                        <table style="font-size:60%">
+                            <tr style="background-color:rgba(145,207,96,0.3)"><td><b>Farmers percieved getting higher prices</b></td><td>Islam & Ake Grönlund 2009, Lokanathan et al 2011</td></tr>
+                            <tr style="background-color:rgba(145,207,96,0.3)"><td><b>Evidence of increased bargaining power</b></td><td>Courtois & Subervie 2014, NYU CTED 2013, Nakasone 2013</td></tr>
+                            <tr style="background-color:rgba(255,255,191,0.3)"><td><b>Price increases for some crops but not others</b></td><td>Nakasone 2013, NYU CTED 2013, Courtois & Subervie 2014</td></tr>
+                            <tr style="background-color:rgba(252,141,89,0.3)"><td><b>No observed effect on prices</b></td><td>Camacho & Conover 2010, Fafchamps & Minten 2012</td></tr>
+                            <tr style="background-color:rgba(252,141,89,0.3)"><td><b>No observed change in marketing behaviors</b></td><td>Baumüller 2015, Islam & Grönlund 2010, Lokanathan et al 2011</td></tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>Shortcomings</h3>
+                        <ul>
+                            <li>Usability problems</li>
+                            <li>Lack of alternative markets</li>
+                            <li>Farmers already know prices</li>
+                            <li>Unfamiliarity with other markets</li>
+                            <li>Relationships with market agents</li>
+                            <li>Attitudes towards risk</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <blockquote cite="https://doi.org/10.1080/03085147.2015.1013742">
+                            "...our informants consistently disclaimed any practice of acquiring market price information for the purpose of comparison between markets (by phone or other means)..."<br>
+                            <span style="font-size:80%; opacity:0.8">&mdash; Burrell and Oreglia 2015</span>
+                        </blockquote>
+                    </section>
+                </section>
+
+         
+                <section data-background-image="pictures/market2.jpg" data-background-opacity="0.5" data-background-color"#222">
+                    <h3 style="color:#FFF">Could a market info system be useful in Buxar, Bihar?</h3>
+                    <h5 class="fragment">Interviews + Long-term field engagement</h5>
+                </section>
+
+                <section>
+                    <section data-background-image="pictures/nayabhojpur.jpg" style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1); color:#FFF">
+                        <div class="stretch"></div>
+                        <h3 style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1); color:#FFF">Bihari vegetable markets</h3>
+                        <h5 style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1); color:#FFF">from long-term field engagement</h5>
+                    </section>
+                    <section data-background-image="pictures/dharhara-standing.jpg">
+                        <div class="fragment" style="background:rgba(30,30,30,0.7); padding: 50px;">
+                            <h4>Heterogenous structures</h4>
+                            <ul>
+                                <li>Bihar abolished APMC in 2006</li>
+                                <li>Varying sizes</li>
+                                <li>Retail vs. Wholesale</li>
+                                <li>Consumption vs. Export</li>
+                                <li>Volatile Prices</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section data-background-image="pictures/gobi-gaddidar-edited.jpg">
+                        <div class="fragment" style="background:rgba(30,30,30,0.7); padding: 50px; position: absolute; right:0">
+                            <h4>Marketplace Actors</h4>
+                            <ul>
+                                <li>Local Traders</li>
+                                <li>Long-Distance Traders</li>
+                                <li>Commission Agents / Gaddidars</li>
+                                <li>Laborers</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section data-background-image="pictures/standing-with-greens-recolored.jpg" data-background-size="contain" ></section>
+
+                    <section data-background-image="pictures/sack.jpg" data-background-size="contain"></section>
+                    <section data-background-image="pictures/transport1.jpg"></section>
+                    <section data-background-image="pictures/gobitruck.jpg"></section>
+                    <section data-background-image="pictures/onionbike.jpg"  data-background-size="contain" ></section>
+                </section>                
+
+
+
+
+
+
+
+
+                <section class="whitebg" data-background-color="#d6d8db" data-background-image="pictures/market2.jpg" data-background-opacity="0.2">
+
+                    <section>
+
+                        <div style="font-size:140%"><span style="font-weight:bold">Finding</span>: Farmers frequently used phones for vegetable marketing</div>
+
+                        <!--<ul class="inline-list">
+                            <li>Price checking</li>
+                            <li>Negotiation</li>
+                            <li>Market Selection</li>
+                            <li>Aribtrage</li>
+                        </ul>-->
+                        <div style="font-size:80%">
+                        <br><br><br>since about 2015<br><br>
+                        Price&nbsp;checking
+                        &bull;&nbsp;Negotiation
+                        &bull;&nbsp;Market&nbsp;Selection
+                        &bull;&nbsp;Arbitrage
+                        </div>
+                    </section>
+                    
+
+                    <section>
+                        <h3>Price Checking</h3>
+                        <ul>
+                            <li>Frequently calling market agents</li>
+                            <li>Sharing with other farmers</li>
+                            <li>Dealing with traders directly<br></li>
+                            <li>Not everyone checked prices</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Choosing Markets</h3>
+                        <blockquote class="dark"><small>In some cases:</small><br>"When the market starts, [I find] out the rates everyday.  I go wherever the rate is good."</blockquote>
+                    </section>
+
+                    <section>
+                        <h3>Negotiation with Traders</h3>
+                        <blockquote class="dark">"We negotiate with farm-gate traders based on the previous
 day’s market rates. We offer 2 rupees above yesterday’s rate, and
 then the traders negotiate it down to 1 rupee above yesterday’s rate"</blockquote>
-						<!-- this might be a better quote: F8 said that he called traders in far-off Ara
-mandi to negotiate with local traders since rates were always |2–8
-higher there. -->
-					</section>
-					<section data-transition="slide">
-						<h3 style="color:#000">Arbitrage</h3>
-						<blockquote><small><b>Market commission agent:</b></small><br>"Traders call every morning for prices"</blockquote>
-					</section>
-				</section>
+                    </section>
+
+                    <section>
+                        <h3>Arbitrage</h3>
+                        Traders buy where prices are low, and sell where prices are high
+                    </section>
+                    
+                    <section>
+                        <h4>Price checking</h4>
+                        <blockquote>
+                            <div style="font-size:80%; padding-bottom: 1em;"><b>Q:</b> If you sell the same agent every time, then why do you bother to check prices?</div>
+                            <div class="fragment"><b>A:</b> Well when the prices are good then I'm happy, and when the prices are bad then I'm sad!</div>
+                        </blockquote>
+                    </section>
+
+                
+
+                <aside class="notes">Many exceptions: trusting local traders, choosing markets based on volume but not price, my local market has good rates.</aside>
+                </section>
 
 
 
 
-				<section data-background-color="#EF5928" style="color:#000" data-background-image="pictures/nayabhojpur.jpg" data-background-opacity="0.1">
-					<section>
-						<h3 style="color:#000">Market changes</h3>
-						<h5 style="color:#000">Mobile phones + Road improvements</h5>
-						<ul>
-							<li class="fragment growshrink" class="fragment">More traders, particularly at farmgate</li>
-							<li class="fragment growshrink" class="fragment">
-								Changes in farmers' market choices
-								<blockquote style="background:#D13D14; font-size: 80%">”the traders from Ara mandi are coming here now, so there is no point in going to Ara mandi.”</blockquote>
-							</li>
-							<li class="fragment growshrink" class="fragment">Price stabilization</li>
-							<li class="fragment growshrink" class="fragment"><b>Consistence with information + information scarcity theories</b></li>
-						</ul>
-					</section>
-				</section>
 
 
-				
+                <section data-background-color="#d6d8db" style="color:#000" data-background-image="pictures/nayabhojpur.jpg" data-background-opacity="0.2" class="whitebg">
+                    <section>
+                        <div style="font-size:140%"><span style="font-weight:bold">Finding</span>: Recent market changes</div>
+                        <div style="color:#000; margin-bottom: 1em">Mobile phones + Road improvements</div>
+                        <ul>
+                            <li class="fragment" class="fragment">More traders, particularly at farmgate</li>
+                            <li class="fragment" class="fragment">
+                                Changes in farmers' market choices
+                                <blockquote style="font-size: 80%">”the traders from Ara mandi are coming here now, so there is no point in going to Ara mandi.”</blockquote>
+                            </li>
+                            <li class="fragment" class="fragment">Price stabilization</li>
+                            <!--<li class="fragment growshrink" class="fragment"><b>Consistence with information + information scarcity theories</b></li>-->
+                        </ul>
+                    </section>
+                </section>
 
 
-				<section class="whitebg" data-background-image="pictures/turmeric-field.jpg" data-background-opacity="0.3" data-background-color="#d6d8db">
-					<section data-transition="slide">
-						<h3>Not just prices</h3>
-						Many other factors go into marketing decisions
-					</section>
+                
+                
+                
+                <section class="whitebg" data-background-image="pictures/turmeric-field.jpg" data-background-opacity="0.3" data-background-color="#d6d8db">
+                    <section data-transition="slide">
+                        <div style="font-size:140%"><span style="font-weight:bold">Finding</span>: Additional Factors</div>
+                        <br>
+                        <div style="font-size:85%">
+                            Market&nbsp;capacity
+                            &bull;&nbsp;Convenience
+                            &bull;&nbsp;Production&nbsp;volume
+                            &bull;&nbsp;Seasonality
+                            &bull;&nbsp;Familiarity
+                            &bull;&nbsp;Personal&nbsp;relationships
+                            &bull;&nbsp;Credit
+                            &bull;&nbsp;Risk
+                            &bull;&nbsp;Danger
+                        </div>
+                    </section>
 
-					<section data-transition="slide">
-						<h5>Market Capacity, Supply Gluts, Price Crashes</h5>
-						<blockquote style="font-size:85%">"Let’s say I have 2 quintal of
+                    <section data-transition="slide">
+                        <h5>Market Capacity, Supply Gluts, Price Crashes</h5>
+                        <blockquote style="font-size:85%">"Let’s say I have 2 quintal of
 tomatoes, and if I get to know someone else has 5 quintal then I
 know that the rate for tomatoes is going to drop."</blockquote>
-					</section>
+                    </section>
 
-					<section data-transition="slide">
-						<h5>Production volume and seasonality</h5>
-						<blockquote>“I never take any decision on
-prices. When the volume is low I go to Dumri market, when it’s high I
+                        <section data-transition="slide">
+                        <h3>Time and Convenience</h3>
+                        <blockquote>“I couldn't manage with
+everything; I'm growing old.”</blockquote>
+                        Selling vegetables is hugely time-consuming
+                    </section>
+
+                    <section data-transition="slide">
+                        <h5>Production volume and seasonality</h5>
+                        <blockquote>“I never take any decision on
+prices. When my volume is low I go to Dumri market, when it’s high I
 go to Nayabhojpur market."</blockquote>
-					</section>
+                        Volume varies by season
+                    </section>
 
-					<section data-transition="slide">
-						<h3>Time and Convenience</h3>
-						<blockquote>“I could not manage with
-everything. I am growing old.”</blockquote>
-						Selling at a market can take hours
-					</section>
+                    <section data-transition="slide">
+                        <h3>Familiarity</h3>
+                        <ul>
+                            <li>Markets have different operations</li>
+                            <li>In-market connections are very helpful</li>
+                        </ul>
+                    </section>
 
-					<section data-transition="slide">
-						<h3>Familiarity</h3>
-						<blockquote style="font-size:100%">"Every
-	market has different operations."</blockquote>
-					</section>
-
-					<section data-transition="slide">
-						<h4>Relationships with Commission Agents</h4>
-						<blockquote>“All goes
-wrong if you keep switching commission agents”.</blockquote>
-						<!--vs.
-						<blockquote>We want the price, we don’t want a relationship.</blockquote>-->
-					</section>
+                    <section data-transition="slide">
+                        <h4>Relationships with Commission Agents</h4>
+                        <blockquote>“All goes
+wrong if you keep switching commission agents.”</blockquote>
+                        vs.
+                        <blockquote>“We want the price, we don’t want a relationship!”</blockquote>
+                    </section>
 
 
-					<section data-transition="slide">
-						<h4>Attitudes towards risk</h4>
-						<blockquote>“Yeah, I have had to return home with the stock...
+                    <section data-transition="slide">
+                        <h4>Attitudes towards risk</h4>
+                        <blockquote>“Yeah, I have had to return home with the stock...
 If today I get a bad rate, I might also get a good rate tomorrow.”</blockquote>
-					</section>
+                        Wide variation in willingness to take risks
+                    </section>
 
-					<section data-transition="slide">
-						<h3>Credit</h3>
-						<blockquote><b>Q:</b> Does the commission agent ever give you money [credit] to buy vegetables or something alke?
-<br><br>
-<b>A:</b> He does, but we don't take because then we will be tied [to him].</blockquote>
-					</section>
+                    <section data-transition="slide">
+                        <h3>Credit</h3>
+                        <ul>
+                            <li>Farmers are tied to commission agents who give them credit</li>
+                            <li>Rates as high as ₹20 per ₹100 per month</li>
+                    </section>
 
-					<section data-transition="slide">
-						<h3>Danger + Bribes</h3>
-						<blockquote style="font-size:100%">“[You give about] ₹1500 to the
-	police so any difference in market prices is a loss to us.”</blockquote>
-					</section>
+                    <section data-transition="slide">
+                        <h3>Danger + Bribes</h3>
+                        <blockquote style="font-size:100%"><small>Traveling at night to reach a distant market:</small><br>
+                        “[You give about] ₹1500 to the
+    police so any difference in market prices is a loss to us.”</blockquote>
+                    </section>
 
-			</section>
+            </section>
 
-			<section data-background-image="pictures/market1.jpg" data-background-opacity="0.5" data-background-color"#222">
-				<h3>Can a market information service be helpful in Buxar?</h3>
-			</section>
+            <section data-background-image="pictures/market1.jpg" data-background-opacity="0.5" data-background-color"#222">
+                <h3>Could a market info service be helpful in Buxar, Bihar?</h3>
+                <ul>
+                    <li class="fragment">Information Asymmetry + Scarcity</li>
+                    <li class="fragment">Convenience</li>
+                    <li class="fragment">Social obligations</li>
+                    <li class="fragment">Market connections + familiarity</li>
+                </ul>
+            </section>
 
 
-			<section data-background-color="#9A9FA6">
-			    <section class="whitebg"><h3>Can we extend a price information service to address its shortcomings?</h3></section>
-				<section data-transition="slide"><img class="stretch" src="pictures/prototypes-4.png"></section>
-				<section data-transition="slide"><img class="stretch" src="pictures/mandimaster.png"></section>
-			</section>
+            <section data-background-color="#9A9FA6">
+                <section class="whitebg"><h3>Can we extend a price information service to address its shortcomings?</h3></section>
+                <section data-transition="slide"><img class="stretch" src="pictures/prototypes-4-labeled.png"></section>
+                <section data-transition="slide"><img class="stretch" src="pictures/mandimaster.png"></section>
+            </section>
 
-			<section data-background-image="pictures/gobi-video.jpg">
-				<section  data-background-opacity="0.5" data-background-color="#111" data-background-image="pictures/gobi-video.jpg">
-					<h3>Other strategies</h3>
-					<small>Some market-access barriers are not addressable by a market-information service</small>
-					<ul style="font-size:70%">
-						<li><b>Time + Distance:</b> Loop aggregation and digital payments</li>
-						<li><b>Unfamiliarity:</b> farmer networking, market field trips</li>
-						<li><b>Marketing skills:</b> training videos and courses
-					</ul>
-				</section>
-				<section data-background-image="pictures/gobi-video.jpg">
-					<div class="stretch"></div>
-					<b><small>Loop farmers watch a video about how to cut Cauliflower for a distant market</small></b>
-				</section>
-			</section>
-			
-			
-			<section>
-			    <section>
-			        <h3>Extra Slides</h4>
-			    </section>
-			    
-			    <section data-background-image="pictures/interview.jpg" data-background-color="#000" data-background-opacity="0.3">
-					<h3 style="color:#fff">Interviews</h3>
-					<ul style="font-size:70%; color:#fff">
-							<li>11 farmers in 6 villages</li>
-							<li>6 Loop aggregators (also farmers)</li>
-							<li>3 Commission agents</li>
-							<li style="list-style:none">&nbsp;</li>
-							<li>All men, ages 20 to 61</li>
-							<li>18 of 20 had mobile phones</li>
-							<li>All farmers grew vegetables</li>
-							<li>Majority owned farmland</li>
-							<li style="list-style:none">&nbsp;</li>
-							<li>Interviews in Hindi</li>
-							<li>2-person interview team</li>
-							<li>Tried for private interview locations</li>
-							<li>All recorded except commission agents</li>
-							<li>Questions informed by prior fieldwork</li>
-						</li>
-					</ul>
-				</section>
-				
-				<section data-transition="slide" class="whitebg" data-background-color="#d6d8db">
-					<h3 style="color:#000">Information sources</h3>
-					<ul>
-						<li class="fragment growshrink">
-							Calling commission agents
-							<blockquote class="dark">"Twenty to twenty five farmers call me every day... we never discuss quantities, only prices."</blockquote>
-						</li>
-						<li class="fragment growshrink">
-							Making deals with traders over the phone
-							<ul><li>Market traders + farm-gate traders</li></ul>
-						</li>
+            <section data-background-image="pictures/gobi-video.jpg">
+                <section  data-background-opacity="0.5" data-background-color="#111" data-background-image="pictures/gobi-video.jpg">
+                    <h3>Other strategies</h3>
+                    <small>Some market-access barriers are not addressable by a market-information service</small>
+                    <ul style="font-size:70%">
+                        <li class="fragment"><b>Time + Distance:</b> Loop aggregation and digital payments</li>
+                        <li class="fragment"><b>Credit relationships:</b> Digital payments help access new credit sources</li>
+                        <li class="fragment"><b>Unfamiliarity:</b> farmer networking, market field trips</li>
+                        <li class="fragment"><b>Marketing skills:</b> training videos and courses
+                    </ul>
+                </section>
+                <section data-background-image="pictures/gobi-video.jpg">
+                    <div class="stretch"></div>
+                    <b><small>Loop farmers watch a video about how to cut Cauliflower for a distant market</small></b>
+                </section>
+            </section>
+            
+            
+            <section>
+                <h3>Takeaways</h3>
+                <ol>
+                    <li>
+                        I didn't make this slide yet
+                    </li>
+                </ol>
+            </section>
+            
+            <section>
+                <section>
+                    <h3>Extra Slides</h4>
+                </section>
+                
+                <section data-background-image="pictures/interview.jpg" data-background-color="#000" data-background-opacity="0.3">
+                    <h3 style="color:#fff">Interviews</h3>
+                    <ul style="font-size:70%; color:#fff">
+                            <li>11 farmers in 6 villages</li>
+                            <li>6 Loop aggregators (also farmers)</li>
+                            <li>3 Commission agents</li>
+                            <li style="list-style:none">&nbsp;</li>
+                            <li>All men, ages 20 to 61</li>
+                            <li>18 of 20 had mobile phones</li>
+                            <li>All farmers grew vegetables</li>
+                            <li>Majority owned farmland</li>
+                            <li style="list-style:none">&nbsp;</li>
+                            <li>Interviews in Hindi</li>
+                            <li>2-person interview team</li>
+                            <li>Tried for private interview locations</li>
+                            <li>All recorded except commission agents</li>
+                            <li>Questions informed by prior fieldwork</li>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section data-transition="slide" data-background-color="white"  data-background-transition="slide">
+                        <img class="stretch" src="pictures/Loop-flowchart.jpg">
+                </section>
+                
+                <section data-transition="slide" data-background-color="white" style="color:#222">
+                        <h5 style="color:#222">Benefits for farmers</h5>
+                        <img class="stretch" src="pictures/loop-benefits.png">
+                </section>
+                
+                <section data-transition="slide" class="whitebg" data-background-color="#d6d8db">
+                    <h3 style="color:#000">Information sources</h3>
+                    <ul>
+                        <li class="fragment growshrink">
+                            Calling commission agents
+                            <blockquote class="dark">"Twenty to twenty five farmers call me every day... we never discuss quantities, only prices."</blockquote>
+                        </li>
+                        <li class="fragment growshrink">
+                            Making deals with traders over the phone
+                            <ul><li>Market traders + farm-gate traders</li></ul>
+                        </li>
 
-						<li class="fragment growshrink">Other farmers</li>
-					</ul>
-				</section>
-					
-				<section data-background-color="#EF5928" style="color:#000" data-background-image="pictures/nayabhojpur.jpg" data-background-opacity="0.1">
-			        <h3 style="color:#000">Consistence with information asymmetry theory:</h3>
-			        <blockquote style="background:#D13D14">“Before having mobile phones, traders had
+                        <li class="fragment growshrink">Other farmers</li>
+                    </ul>
+                </section>
+                
+                
+                <section data-background-color="#EF5928" style="color:#000" data-background-image="pictures/nayabhojpur.jpg" data-background-opacity="0.1">
+                    <h3 style="color:#000">Consistence with information asymmetry theory:</h3>
+                    <blockquote style="background:#D13D14">“Before having mobile phones, traders had
     better margins because not many people had price information. Now
     everybody knows the prices.”</blockquote>
-		        </section>
-		        <section data-background-color="#EF5928" style="color:#000" data-background-image="pictures/nayabhojpur.jpg" data-background-opacity="0.1">
-			        <h3 style="color:#000">Consistence with information scarcity theory:</h3>
-			        <blockquote style="background:#D13D14">“Now after mobile phones, prices have become more stable and balanced between markets.”</blockquote>
-		        </section>
-			</section>
-			
+                </section>
+                <section data-background-color="#EF5928" style="color:#000" data-background-image="pictures/nayabhojpur.jpg" data-background-opacity="0.1">
+                    <h3 style="color:#000">Consistence with information scarcity theory:</h3>
+                    <blockquote style="background:#D13D14">“Now after mobile phones, prices have become more stable and balanced between markets.”</blockquote>
+                </section>
+            </section>
+            
 
 
-		</div>
+        </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				],
-				transition: 'slide',
-				history: true
-			});
-		</script>
-	</body>
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ],
+                transition: 'slide',
+                history: true,
+                progress: false,
+                controls: false,
+            });
+        </script>
+    </body>
 </html>
